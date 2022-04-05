@@ -146,7 +146,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func dayOrNight() {
         
-        if current?.dayOrNight == "Ночь" {
+        if current?.dayOrNight == "День" {
             self.view.backgroundColor = UIColor(named: "DayBackground")
             self.tableView.backgroundColor = UIColor(named: "DayBackground")
             self.currentWeatherIcon.image = current!.weather.first?.daySfIcon
