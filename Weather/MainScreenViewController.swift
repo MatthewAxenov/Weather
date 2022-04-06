@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
+class MainScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
     //MARK: Models
     
@@ -44,6 +44,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(HourlyTableViewCell.nib(), forCellReuseIdentifier: HourlyTableViewCell.identifier)
+        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -138,6 +141,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.cityLabel.text = currentCity
         self.descriptionLabel.text = "\(current.weather.first!.conditionString)"
+        print(current.weather.first?.weatherDescription)
         self.currentTemp.text = "\(Int(current.temp))°"
         self.feelsLikeLabel.text = "Ощущается как \(Int(current.feelsLike))°"
         self.windSpeedLabel.text = "\(Int(current.windSpeed)) м/с"
@@ -159,17 +163,63 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     //MARK: TableView
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }
         return models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: HourlyTableViewCell.identifier, for: indexPath) as! HourlyTableViewCell
+            cell.configure(with: hourlyModels)
+            cell.backgroundColor = tableView.backgroundColor
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "DailyTableViewCell", for: indexPath) as! DailyTableViewCell
         cell.configure(with: models[indexPath.row])
+        if indexPath.row == 0 {
+            cell.dayLabel.text = "Сегодня"
+        }
+        if indexPath.row == 1 {
+            cell.dayLabel.text = "Завтра"
+        }
         cell.backgroundColor = tableView.backgroundColor
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = tableView.backgroundColor
+        cell.selectedBackgroundView = backgroundView
         return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 100
+        }
+        return 60
+    }
+    
+    //MARK: Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Detail" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let dailyWeather = models[indexPath.row]
+            let detailedVC = segue.destination as! DetailedViewController
+            detailedVC.models = dailyWeather
+            detailedVC.backGroundColor = tableView.backgroundColor
+            
+        }
+    }
+    
+    
 }
 

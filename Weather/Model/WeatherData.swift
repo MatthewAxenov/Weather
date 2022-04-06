@@ -27,6 +27,22 @@ struct Welcome: Codable {
 // MARK: - Current
 struct Current: Codable {
     let dt: Int
+    
+    var date: String {
+        let date = NSDate(timeIntervalSince1970: Double(dt))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yy"
+        return formatter.string(from: date as Date).capitalized
+    }
+    
+    var dayOfWeek: String {
+        let date = NSDate(timeIntervalSince1970: Double(dt))
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ru_RU")
+        formatter.dateFormat = "EEEE"
+        return formatter.string(from: date as Date).capitalized
+    }
+    
     let sunrise, sunset: Int?
     
     var sunriseHour: Int {
@@ -104,7 +120,7 @@ struct Weather: Codable {
             
         case "clear sky": return "Ясно"
             
-        case "few clouds: 11-25%": return "Небольшие облака"
+        case "few clouds": return "Небольшие облака"
         case "scattered clouds": return "Малооблачно"
         case "broken clouds": return "Облачно с прояснениями"
         case "overcast clouds": return "Пасмурно"
@@ -122,22 +138,24 @@ struct Weather: Codable {
         case "ragged shower rain": return "Косой грибной дождь"
             
         case "light snow": return "Небольшой снег"
-        case "Snow": return "Снег"
-        case "Heavy snow": return "Сильный снегопад"
-        case "Sleet": return "Мокрый снег"
-        case "Light shower sleet": return "Небольшой мокрый снег"
-        case "Shower sleet": return "Слякоть"
-        case "Light rain and snow": return "Небольшой дождь со снегом"
-        case "Rain and snow": return "Дождь со снегом"
-        case "Light shower snow": return "Мокрый снег"
-        case "Shower snow": return "Снежный дождь"
-        case "Heavy shower snow": return "Сильный снежный дождь"
+        case "snow": return "Снег"
+        case "heavy snow": return "Сильный снегопад"
+        case "sleet": return "Мокрый снег"
+        case "light shower sleet": return "Небольшой мокрый снег"
+        case "shower sleet": return "Слякоть"
+        case "light rain and snow": return "Небольшой дождь со снегом"
+        case "rain and snow": return "Дождь со снегом"
+        case "light shower snow": return "Мокрый снег"
+        case "shower snow": return "Снежный дождь"
+        case "heavy shower snow": return "Сильный снежный дождь"
             
-        case "drizzle": return "морось"
-        case "hail": return "град"
-        case "thunderstorm": return "гроза"
-        case "thunderstorm with rain": return "дождь с грозой"
-        case "thunderstorm with hail": return "гроза с градом"
+        case "drizzle", "light intensity drizzle", "heavy intensity drizzle", "light intensity drizzle rain", "drizzle rain", "heavy intensity drizzle rain", "shower rain and drizzle", "heavy shower rain and drizzle", "shower drizzle": return "Моросящий дождь"
+       
+        case "thunderstorm": return "Гроза"
+        case "thunderstorm with rain": return "Дождь с грозой"
+        case "thunderstorm with light rain", "thunderstorm with heavy rain", "light thunderstorm", "heavy thunderstorm", "ragged thunderstorm", "thunderstorm with light drizzle", "thunderstorm with drizzle", "thunderstorm with heavy drizzle": return "Гроза"
+            
+        case "mist", "haze", "fog": return "Туман"
             
         default: return "Загрузка..."
             
@@ -206,11 +224,25 @@ enum Main: String, Codable {
     case snow = "Snow"
     case clear = "Clear"
     case atmosphere = "Atmosphere"
+    case haze = "Haze"
 }
 
 // MARK: - Daily
 struct Daily: Codable {
     let dt, sunrise, sunset, moonrise: Int
+    var date: String {
+        let date = NSDate(timeIntervalSince1970: Double(dt))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yy"
+        return formatter.string(from: date as Date).capitalized
+    }
+    var dayOfWeek: String {
+        let date = NSDate(timeIntervalSince1970: Double(dt))
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ru_RU")
+        formatter.dateFormat = "EEEE"
+        return formatter.string(from: date as Date).capitalized
+    }
     let moonset: Int
     let moonPhase: Double
     let temp: Temp
@@ -225,6 +257,13 @@ struct Daily: Codable {
     let snow: Double?
     let uvi: Double
     let rain: Double?
+    var rainVolume: Int {
+        if rain == nil {
+            return 0
+        } else {
+        return Int(rain!)
+        }
+    }
 
     enum CodingKeys: String, CodingKey {
         case dt, sunrise, sunset, moonrise, moonset

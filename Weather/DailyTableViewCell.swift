@@ -24,20 +24,12 @@ class DailyTableViewCell: UITableViewCell {
     }
     
     func configure(with model: Daily) {
-        self.dayLabel.text = getDayForDate(Date(timeIntervalSince1970: Double(model.dt)))
+        self.dayLabel.text = model.dayOfWeek
         self.minTemp.text = "\(Int(model.temp.min))°"
         self.maxTemp.text = "\(Int(model.temp.max))°"
         self.iconImage.image = model.weather.first?.daySfIcon
         
     }
     
-    func getDayForDate(_ date: Date?) -> String {
-        
-        guard let inputDate = date else { return "" }
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ru_RU")
-        formatter.dateFormat = "EEEE"
-        return formatter.string(from: inputDate).capitalized
-    }
 
 }
