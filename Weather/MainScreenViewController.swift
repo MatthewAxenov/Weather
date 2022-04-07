@@ -36,7 +36,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     var current: Current?
     var currentCity: String?
     
-    //MARK: viewDid
+    //MARK: life cycle
 
 
     override func viewDidLoad() {
@@ -49,10 +49,11 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupLocation()
     }
+    
     
     //MARK: Location
     
@@ -206,6 +207,17 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         }
         return 60
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            title = "Почасовой прогноз"
+        } else if section == 1 {
+            title = "Прогноз на 10 дней"
+        }
+        return title
+    }
+    
+    
     
     //MARK: Segue
     

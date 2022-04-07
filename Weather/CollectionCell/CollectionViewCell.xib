@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcH-bt-GR1">
-                        <rect key="frame" x="0.0" y="0.0" width="214" height="20"/>
+                        <rect key="frame" x="0.0" y="10" width="214" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="e2X-11-8NE"/>
                         </constraints>
@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNl-EF-njL">
-                        <rect key="frame" x="0.0" y="194" width="214" height="20"/>
+                        <rect key="frame" x="0.0" y="184" width="214" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="E9L-tb-oTs"/>
                         </constraints>
@@ -35,22 +35,22 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WHs-WZ-imZ">
-                        <rect key="frame" x="0.0" y="20" width="214" height="174"/>
+                        <rect key="frame" x="0.0" y="35" width="214" height="144"/>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="GNl-EF-njL" firstAttribute="top" secondItem="WHs-WZ-imZ" secondAttribute="bottom" id="6Fl-Md-kTE"/>
+                <constraint firstItem="GNl-EF-njL" firstAttribute="top" secondItem="WHs-WZ-imZ" secondAttribute="bottom" constant="5" id="6Fl-Md-kTE"/>
                 <constraint firstItem="GNl-EF-njL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="9wq-PI-jOC"/>
                 <constraint firstAttribute="trailing" secondItem="WHs-WZ-imZ" secondAttribute="trailing" id="AO6-Lm-CoE"/>
                 <constraint firstItem="WHs-WZ-imZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="PGG-Sy-Uhn"/>
-                <constraint firstItem="NcH-bt-GR1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="TPf-te-jPy"/>
+                <constraint firstItem="NcH-bt-GR1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="TPf-te-jPy"/>
                 <constraint firstAttribute="trailing" secondItem="GNl-EF-njL" secondAttribute="trailing" id="h0A-xg-1hY"/>
                 <constraint firstItem="NcH-bt-GR1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="h8C-RP-qA6"/>
-                <constraint firstItem="WHs-WZ-imZ" firstAttribute="top" secondItem="NcH-bt-GR1" secondAttribute="bottom" id="qtL-qn-NZa"/>
+                <constraint firstItem="WHs-WZ-imZ" firstAttribute="top" secondItem="NcH-bt-GR1" secondAttribute="bottom" constant="5" id="qtL-qn-NZa"/>
                 <constraint firstAttribute="trailing" secondItem="NcH-bt-GR1" secondAttribute="trailing" id="rsk-VQ-qjH"/>
-                <constraint firstAttribute="bottom" secondItem="GNl-EF-njL" secondAttribute="bottom" id="yKL-8g-Uad"/>
+                <constraint firstAttribute="bottom" secondItem="GNl-EF-njL" secondAttribute="bottom" constant="10" id="yKL-8g-Uad"/>
             </constraints>
             <size key="customSize" width="214" height="214"/>
             <connections>
