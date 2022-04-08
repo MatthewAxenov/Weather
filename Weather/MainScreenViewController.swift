@@ -12,8 +12,8 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     
     //MARK: Models
     
-    var models = [Daily]()
-    var hourlyModels = [Current]()
+    var dailyModel = [Daily]()
+    var hourlyModel = [Current]()
     
     //MARK: Outlets
     
@@ -119,11 +119,11 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
             
             let entries = result.daily
             
-            self.models.append(contentsOf: entries)
+            self.dailyModel.append(contentsOf: entries)
             
             let current = result.current
             self.current = current
-            self.hourlyModels = result.hourly
+            self.hourlyModel = result.hourly
             
             DispatchQueue.main.async {
                 self.updateCurrentInterface()
@@ -174,20 +174,20 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         if section == 0 {
             return 1
         }
-        return models.count
+        return dailyModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: HourlyTableViewCell.identifier, for: indexPath) as! HourlyTableViewCell
-            cell.configure(with: hourlyModels)
+            cell.configure(with: hourlyModel)
             cell.backgroundColor = tableView.backgroundColor
             return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DailyTableViewCell", for: indexPath) as! DailyTableViewCell
-        cell.configure(with: models[indexPath.row])
+        cell.configure(with: dailyModel[indexPath.row])
         if indexPath.row == 0 {
             cell.dayLabel.text = "Сегодня"
         }
@@ -219,14 +219,15 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     
     
     
+    
     //MARK: Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Detail" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let dailyWeather = models[indexPath.row]
+            let dailyWeather = dailyModel[indexPath.row]
             let detailedVC = segue.destination as! DetailedViewController
-            detailedVC.models = dailyWeather
+            detailedVC.dailyModel = dailyWeather
             detailedVC.backGroundColor = tableView.backgroundColor
             
         }

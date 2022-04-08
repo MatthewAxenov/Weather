@@ -9,7 +9,7 @@ import UIKit
 
 class DetailedViewController: UIViewController {
     
-    var models: Daily?
+    var dailyModel: Daily?
     
     var backGroundColor: UIColor?
     
@@ -27,6 +27,19 @@ class DetailedViewController: UIViewController {
     @IBOutlet weak var precipitationBlockImage: UIImageView!
     @IBOutlet weak var precipitationLabel: UILabel!
     
+    @IBOutlet weak var descriptionBlockImage: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var feelsLikeLabel: UILabel!
+    
+    @IBOutlet weak var pressureBlockImage: UIImageView!
+    @IBOutlet weak var pressureLabel: UILabel!
+    
+    @IBOutlet weak var humidityBlockImage: UIImageView!
+    @IBOutlet weak var humidityLabel: UILabel!
+    
+    @IBOutlet weak var sunDayBlockImage: UIImageView!
+    @IBOutlet weak var sunriseLabel: UILabel!
+    @IBOutlet weak var sunsetLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +51,7 @@ class DetailedViewController: UIViewController {
     }
     
     func updateInterface() {
-        guard let models = models else { return }
+        guard let models = dailyModel else { return }
         minTempLabel.text = "\(Int(models.temp.min))°"
         maxTempLabel.text = "\(Int(models.temp.max))°"
         image.image = models.weather.first?.daySfIcon
@@ -49,6 +62,21 @@ class DetailedViewController: UIViewController {
         
         precipitationBlockImage.layer.cornerRadius = 15
         precipitationLabel.text = "\(Int(models.pop * 100))%, \(models.rainVolume) мм"
+        
+        descriptionBlockImage.layer.cornerRadius = 15
+        descriptionLabel.text = models.weather.first?.conditionString
+        feelsLikeLabel.text = "Ощущается как \(Int(models.feelsLike.day))° днем и \(Int(models.feelsLike.night))° ночью"
+        
+        pressureBlockImage.layer.cornerRadius = 15
+        pressureLabel.text = "\(models.pressure) мм"
+        
+        humidityBlockImage.layer.cornerRadius = 15
+        humidityLabel.text = "\(Int(models.humidity)) %"
+        
+        sunDayBlockImage.layer.cornerRadius = 15
+        sunriseLabel.text = models.sunriseHour
+        sunsetLabel.text = models.sunsetHour
+        
     }
     
     

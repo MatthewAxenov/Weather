@@ -243,6 +243,18 @@ struct Daily: Codable {
         formatter.dateFormat = "EEEE"
         return formatter.string(from: date as Date).capitalized
     }
+    var sunriseHour: String {
+        let date = NSDate(timeIntervalSince1970: Double(sunrise))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.string(from: date as Date).capitalized
+    }
+    var sunsetHour: String {
+        let date = NSDate(timeIntervalSince1970: Double(sunset))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH.mm"
+        return formatter.string(from: date as Date).capitalized
+    }
     let moonset: Int
     let moonPhase: Double
     let temp: Temp
