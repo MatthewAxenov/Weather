@@ -26,6 +26,10 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
     
+    @IBOutlet weak var windImage: UIImageView!
+    @IBOutlet weak var humidityImage: UIImageView!
+    
+    
     
     
     
@@ -45,8 +49,6 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(HourlyTableViewCell.nib(), forCellReuseIdentifier: HourlyTableViewCell.identifier)
-        
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,6 +142,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         
         dayOrNight()
         
+        
         self.cityLabel.text = currentCity
         self.descriptionLabel.text = "\(current.weather.first!.conditionString)"
         print(current.weather.first?.weatherDescription)
@@ -158,7 +161,9 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         } else {
             self.view.backgroundColor = UIColor(named: "NightBackground")
             self.tableView.backgroundColor = UIColor(named: "NightBackground")
-            self.currentWeatherIcon.image = current!.weather.first?.nightSfIcon
+            self.currentWeatherIcon.image = current!.weather.first?.nightSfIcon.withTintColor(.white, renderingMode: .alwaysOriginal)
+            self.windImage.tintColor = .white
+            self.humidityImage.tintColor = .white
         }
     }
     
@@ -187,7 +192,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DailyTableViewCell", for: indexPath) as! DailyTableViewCell
-        cell.configure(with: dailyModel[indexPath.row])
+        cell.configure(with: dailyModel[indexPath.row], secondModel: hourlyModel.first!)
         if indexPath.row == 0 {
             cell.dayLabel.text = "Сегодня"
         }
@@ -208,16 +213,37 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         return 60
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            title = "Почасовой прогноз"
-        } else if section == 1 {
-            title = "Прогноз на 10 дней"
+            let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+            
+            let label = UILabel()
+            label.frame = CGRect.init(x: 10, y: -20, width: headerView.frame.width, height: headerView.frame.height)
+            label.text = "Почасовой прогноз"
+            label.font = .systemFont(ofSize: 16, weight: .semibold)
+            label.textColor = .label
+            
+            headerView.addSubview(label)
+            
+            return headerView
+            } else if section == 1 {
+                let headerView1 = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+                
+                let label1 = UILabel()
+                label1.frame = CGRect.init(x: 10, y: -20, width: headerView1.frame.width, height: headerView1.frame.height)
+                label1.text = "Прогноз по дням"
+                label1.font = .systemFont(ofSize: 16, weight: .semibold)
+                label1.textColor = .label
+                
+                headerView1.addSubview(label1)
+                return headerView1
+            }
+        return UIView()
         }
-        return title
-    }
     
     
+    //NSArt string
     
     
     //MARK: Segue
@@ -229,7 +255,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
             let detailedVC = segue.destination as! DetailedViewController
             detailedVC.dailyModel = dailyWeather
             detailedVC.backGroundColor = tableView.backgroundColor
-            
+            detailedVC.current = self.current
         }
     }
     

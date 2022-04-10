@@ -32,7 +32,11 @@ class CollectionViewCell: UICollectionViewCell {
     
         self.hourLabel.text = "\(hourString)"
         
+        if model.dayOrNight == "День" {
         self.iconImageView.image = model.weather.first?.daySfIcon
+        } else {
+            self.iconImageView.image = model.weather.first?.daySfIcon.withTintColor(.white, renderingMode: .alwaysOriginal)
+        }
         
         
     }

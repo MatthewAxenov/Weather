@@ -181,8 +181,10 @@
                         <outlet property="currentWeatherIcon" destination="rbM-YY-BrQ" id="E4U-Hm-pfV"/>
                         <outlet property="descriptionLabel" destination="pG8-SQ-rDS" id="29V-el-g3k"/>
                         <outlet property="feelsLikeLabel" destination="B2o-hq-k6N" id="M6O-l6-xoD"/>
+                        <outlet property="humidityImage" destination="n6t-dP-CyR" id="bTH-5s-1Ou"/>
                         <outlet property="humidityLabel" destination="9sb-kf-Md1" id="YLF-e2-rzn"/>
                         <outlet property="tableView" destination="icr-IY-Gv7" id="yu5-Vl-u1C"/>
+                        <outlet property="windImage" destination="PQq-xq-MvT" id="k5W-BO-uwA"/>
                         <outlet property="windSpeedLabel" destination="X5C-Sr-1gC" id="Beq-GL-ImW"/>
                     </connections>
                 </viewController>

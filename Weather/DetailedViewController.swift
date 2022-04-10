@@ -13,6 +13,8 @@ class DetailedViewController: UIViewController {
     
     var backGroundColor: UIColor?
     
+    var current: Current?
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -55,6 +57,9 @@ class DetailedViewController: UIViewController {
         minTempLabel.text = "\(Int(models.temp.min))°"
         maxTempLabel.text = "\(Int(models.temp.max))°"
         image.image = models.weather.first?.daySfIcon
+        if current?.dayOrNight == "Ночь" {
+            image.tintColor = .white
+        }
         titleLabel.text = "\(models.dayOfWeek), \(models.date)"
 
         windBlockImage.layer.cornerRadius = 15
@@ -78,6 +83,14 @@ class DetailedViewController: UIViewController {
         sunsetLabel.text = models.sunsetHour
         
     }
+    
+//    func updateImages() {
+//        guard let current = current else { return }
+//        if current.dayOrNight == "Ночь" {
+//            image.image = models.weather.first?.daySfIcon.withTintColor(.white, renderingMode: .alwaysOriginal)
+//        }
+//
+//    }
     
     
 
