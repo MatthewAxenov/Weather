@@ -9,6 +9,7 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
+    
     static let idendifier = "CollectionViewCell"
     
     @IBOutlet var iconImageView: UIImageView!
@@ -31,13 +32,8 @@ class CollectionViewCell: UICollectionViewCell {
         let hourString = formatter.string(from: date)
     
         self.hourLabel.text = "\(hourString)"
-        
-        if model.dayOrNight == "День" {
+
         self.iconImageView.image = model.weather.first?.daySfIcon
-        } else {
-            self.iconImageView.image = model.weather.first?.daySfIcon.withTintColor(.white, renderingMode: .alwaysOriginal)
-        }
-        
         
     }
     

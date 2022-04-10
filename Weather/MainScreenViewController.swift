@@ -37,7 +37,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
-    var current: Current?
+    public var current: Current? 
     var currentCity: String?
     
     //MARK: life cycle
@@ -192,7 +192,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DailyTableViewCell", for: indexPath) as! DailyTableViewCell
-        cell.configure(with: dailyModel[indexPath.row], secondModel: hourlyModel.first!)
+        cell.configure(with: dailyModel[indexPath.row])
         if indexPath.row == 0 {
             cell.dayLabel.text = "Сегодня"
         }

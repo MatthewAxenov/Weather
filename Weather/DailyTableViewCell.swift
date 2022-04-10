@@ -9,7 +9,6 @@ import UIKit
 
 class DailyTableViewCell: UITableViewCell {
     
-    var current = [Current]()
 
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
@@ -25,15 +24,12 @@ class DailyTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure(with model: Daily, secondModel: Current) {
+    func configure(with model: Daily) {
         self.dayLabel.text = model.dayOfWeek
         self.minTemp.text = "\(Int(model.temp.min))°"
         self.maxTemp.text = "\(Int(model.temp.max))°"
-        if current.first?.dayOrNight == "День" {
-            self.iconImage.image = model.weather.first?.daySfIcon
-        } else {
-            self.iconImage.image = model.weather.first?.daySfIcon.withTintColor(.white, renderingMode: .alwaysOriginal)
-        }
+        self.iconImage.image = model.weather.first?.daySfIcon
+        
         
     }
     

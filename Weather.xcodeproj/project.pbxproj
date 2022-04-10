@@ -20,6 +20,7 @@
 		985C432D27FCE8650049A270 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985C432B27FCE8650049A270 /* CollectionViewCell.swift */; };
 		985C432E27FCE8650049A270 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985C432C27FCE8650049A270 /* CollectionViewCell.xib */; };
 		985C433227FDBEE20049A270 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985C433127FDBEE20049A270 /* DetailedViewController.swift */; };
+		988816202802DBE000DE2FE7 /* Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9888161F2802DBE000DE2FE7 /* Current.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		985C432B27FCE8650049A270 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		985C432C27FCE8650049A270 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		985C433127FDBEE20049A270 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
+		9888161F2802DBE000DE2FE7 /* Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Current.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				985C431B27FB69C40049A270 /* WeatherData.swift */,
+				9888161F2802DBE000DE2FE7 /* Current.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				988816202802DBE000DE2FE7 /* Current.swift in Sources */,
 				985C430C27FB5C150049A270 /* MainScreenViewController.swift in Sources */,
 				985C432527FC79B20049A270 /* DailyTableViewCell.swift in Sources */,
 				985C433227FDBEE20049A270 /* DetailedViewController.swift in Sources */,

@@ -84,16 +84,4 @@ class DetailedViewController: UIViewController {
         
     }
     
-//    func updateImages() {
-//        guard let current = current else { return }
-//        if current.dayOrNight == "Ночь" {
-//            image.image = models.weather.first?.daySfIcon.withTintColor(.white, renderingMode: .alwaysOriginal)
-//        }
-//
-//    }
-    
-    
-
-    
-
 }
