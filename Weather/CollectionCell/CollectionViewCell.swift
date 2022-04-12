@@ -32,7 +32,7 @@ class CollectionViewCell: UICollectionViewCell {
         let hourString = formatter.string(from: date)
     
         self.hourLabel.text = "\(hourString)"
-
+        
         self.iconImageView.image = model.weather.first?.daySfIcon
         
     }

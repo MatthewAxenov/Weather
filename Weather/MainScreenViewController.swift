@@ -30,7 +30,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var humidityImage: UIImageView!
     
     
-    
+    var hourCell = HourlyTableViewCell()
     
     
     //MARK: Location properties
@@ -125,6 +125,8 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
             
             let current = result.current
             self.current = current
+            
+            
             self.hourlyModel = result.hourly
             
             DispatchQueue.main.async {
@@ -186,12 +188,20 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: HourlyTableViewCell.identifier, for: indexPath) as! HourlyTableViewCell
+
             cell.configure(with: hourlyModel)
             cell.backgroundColor = tableView.backgroundColor
+            if current?.dayOrNight == "Ночь" {
+                cell.tintColor = .white
+            }
             return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DailyTableViewCell", for: indexPath) as! DailyTableViewCell
+        guard let current = current else {
+            return UITableViewCell()
+        }
+
         cell.configure(with: dailyModel[indexPath.row])
         if indexPath.row == 0 {
             cell.dayLabel.text = "Сегодня"
@@ -200,6 +210,11 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
             cell.dayLabel.text = "Завтра"
         }
         cell.backgroundColor = tableView.backgroundColor
+        
+        if current.dayOrNight == "Ночь" {
+            cell.tintColor = .white
+        }
+        
         let backgroundView = UIView()
         backgroundView.backgroundColor = tableView.backgroundColor
         cell.selectedBackgroundView = backgroundView

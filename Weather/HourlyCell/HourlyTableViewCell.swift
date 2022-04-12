@@ -34,6 +34,7 @@ class HourlyTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
     func configure(with models: [Current]) {
         self.models = models
         collectionView.reloadData()
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -49,6 +50,7 @@ class HourlyTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.idendifier, for: indexPath) as! CollectionViewCell
+
         cell.configure(with: models[indexPath.row])
         
         return cell
