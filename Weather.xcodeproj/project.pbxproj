@@ -71,11 +71,8 @@
 			isa = PBXGroup;
 			children = (
 				985C433027FCE98A0049A270 /* Model */,
-				985C432F27FCE86B0049A270 /* CollectionCell */,
-				985C432A27FCE7BF0049A270 /* HourlyCell */,
-				985C432427FC79B20049A270 /* DailyTableViewCell.swift */,
-				985C430B27FB5C150049A270 /* MainScreenViewController.swift */,
-				985C433127FDBEE20049A270 /* DetailedViewController.swift */,
+				989EA56E280B009C007AD26B /* Cells */,
+				989EA56F280B00B9007AD26B /* View Controllers */,
 				985C430D27FB5C150049A270 /* Main.storyboard */,
 				985C430727FB5C150049A270 /* AppDelegate.swift */,
 				985C430927FB5C150049A270 /* SceneDelegate.swift */,
@@ -110,6 +107,25 @@
 				985C431B27FB69C40049A270 /* WeatherData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		989EA56E280B009C007AD26B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				985C432F27FCE86B0049A270 /* CollectionCell */,
+				985C432A27FCE7BF0049A270 /* HourlyCell */,
+				985C432427FC79B20049A270 /* DailyTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		989EA56F280B00B9007AD26B /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				985C430B27FB5C150049A270 /* MainScreenViewController.swift */,
+				985C433127FDBEE20049A270 /* DetailedViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
