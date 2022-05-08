@@ -20,6 +20,7 @@
 		985C432D27FCE8650049A270 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985C432B27FCE8650049A270 /* CollectionViewCell.swift */; };
 		985C432E27FCE8650049A270 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985C432C27FCE8650049A270 /* CollectionViewCell.xib */; };
 		985C433227FDBEE20049A270 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985C433127FDBEE20049A270 /* DetailedViewController.swift */; };
+		98681D0F281983E400254449 /* CitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98681D0E281983E400254449 /* CitiesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		985C432B27FCE8650049A270 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		985C432C27FCE8650049A270 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		985C433127FDBEE20049A270 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
+		98681D0E281983E400254449 /* CitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				985C432F27FCE86B0049A270 /* CollectionCell */,
 				985C432A27FCE7BF0049A270 /* HourlyCell */,
 				985C432427FC79B20049A270 /* DailyTableViewCell.swift */,
+				98681D0E281983E400254449 /* CitiesTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				985C433227FDBEE20049A270 /* DetailedViewController.swift in Sources */,
 				985C430827FB5C150049A270 /* AppDelegate.swift in Sources */,
 				985C432D27FCE8650049A270 /* CollectionViewCell.swift in Sources */,
+				98681D0F281983E400254449 /* CitiesTableViewCell.swift in Sources */,
 				985C431C27FB69C40049A270 /* WeatherData.swift in Sources */,
 				985C432827FCE7BA0049A270 /* HourlyTableViewCell.swift in Sources */,
 				985C430A27FB5C150049A270 /* SceneDelegate.swift in Sources */,

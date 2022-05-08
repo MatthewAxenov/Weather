@@ -147,7 +147,6 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         
         self.cityLabel.text = currentCity
         self.descriptionLabel.text = "\(current.weather.first!.conditionString)"
-        print(current.weather.first?.weatherDescription)
         self.currentTemp.text = "\(Int(current.temp))°"
         self.feelsLikeLabel.text = "Ощущается как \(Int(current.feelsLike))°"
         self.windSpeedLabel.text = "\(Int(current.windSpeed)) м/с"

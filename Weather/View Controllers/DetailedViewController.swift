@@ -23,23 +23,26 @@ class DetailedViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     
     
-    @IBOutlet weak var windBlockImage: UIImageView!
+    @IBOutlet weak var windBlockView: UIView!
     @IBOutlet weak var windSpeedLabel: UILabel!
     
-    @IBOutlet weak var precipitationBlockImage: UIImageView!
+    @IBOutlet weak var perBlockView: UIView!
     @IBOutlet weak var precipitationLabel: UILabel!
     
-    @IBOutlet weak var descriptionBlockImage: UIImageView!
+    
+    @IBOutlet weak var descriptionView: UIView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var feelsLikeLabel: UILabel!
     
-    @IBOutlet weak var pressureBlockImage: UIImageView!
+    @IBOutlet weak var pressureView: UIView!
     @IBOutlet weak var pressureLabel: UILabel!
     
-    @IBOutlet weak var humidityBlockImage: UIImageView!
+    
+    @IBOutlet weak var humidityView: UIView!
     @IBOutlet weak var humidityLabel: UILabel!
     
-    @IBOutlet weak var sunDayBlockImage: UIImageView!
+    
+    @IBOutlet weak var sundayBlockView: UIView!
     @IBOutlet weak var sunriseLabel: UILabel!
     @IBOutlet weak var sunsetLabel: UILabel!
     
@@ -62,23 +65,23 @@ class DetailedViewController: UIViewController {
         }
         titleLabel.text = "\(models.dayOfWeek), \(models.date)"
 
-        windBlockImage.layer.cornerRadius = 15
+        windBlockView.layer.cornerRadius = 15
         windSpeedLabel.text = "\(models.windSpeed) м/с"
         
-        precipitationBlockImage.layer.cornerRadius = 15
-        precipitationLabel.text = "\(Int(models.pop * 100))%, \(models.rainVolume) мм"
+        perBlockView.layer.cornerRadius = 15
+        precipitationLabel.text = "\(Int(models.pop * 100))%"
         
-        descriptionBlockImage.layer.cornerRadius = 15
+        descriptionView.layer.cornerRadius = 15
         descriptionLabel.text = models.weather.first?.conditionString
-        feelsLikeLabel.text = "Ощущается как \(Int(models.feelsLike.day))° днем и \(Int(models.feelsLike.night))° ночью"
+        feelsLikeLabel.text = "Ощущается как \(Int(models.feelsLike.day))° днем"
         
-        pressureBlockImage.layer.cornerRadius = 15
+        pressureView.layer.cornerRadius = 15
         pressureLabel.text = "\(models.pressure) мм"
         
-        humidityBlockImage.layer.cornerRadius = 15
+        humidityView.layer.cornerRadius = 15
         humidityLabel.text = "\(Int(models.humidity)) %"
         
-        sunDayBlockImage.layer.cornerRadius = 15
+        sundayBlockView.layer.cornerRadius = 15
         sunriseLabel.text = models.sunriseHour
         sunsetLabel.text = models.sunsetHour
         
