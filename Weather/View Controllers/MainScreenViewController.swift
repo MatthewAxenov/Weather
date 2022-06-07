@@ -32,6 +32,12 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
     
     var hourCell = HourlyTableViewCell()
     
+    let pullToRefresh: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(requestWeatherForLocation), for: .valueChanged)
+        return refresh
+    }()
+    
     
     //MARK: Location properties
     
@@ -48,6 +54,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.refreshControl = pullToRefresh
         tableView.register(HourlyTableViewCell.nib(), forCellReuseIdentifier: HourlyTableViewCell.identifier)
     }
     
@@ -69,7 +76,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         if !locations.isEmpty, currentLocation == nil {
             currentLocation = locations.first
             locationManager.stopUpdatingLocation()
-            requestWeatherForLocation()
+            requestWeatherForLocation(sender: pullToRefresh)
             let geocoder = CLGeocoder()
             guard let currentLocation = currentLocation else {
                 return
@@ -88,7 +95,7 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    func requestWeatherForLocation() {
+    @objc func requestWeatherForLocation(sender: UIRefreshControl) {
         
         guard let currentLocation = currentLocation else {
             return
@@ -134,6 +141,8 @@ class MainScreenViewController: UIViewController, UITableViewDataSource, UITable
                 self.tableView.reloadData()
             }
         }).resume()
+        
+        sender.endRefreshing()
     }
     
     //MARK: UpdateCurrentInterface
